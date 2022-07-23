@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { request } from "./utils/request";
 export default function FirstLevelComponent() {
   const [array, setArray] = useState([]);
   const [count, setCount] = useState(0);
   useEffect(() => {
     printNum();
+    fetchData();
   }, []);
+
+  async function fetchData() {
+    const res = await request.get("users");
+    console.log(res);
+  }
+
   function printNum() {
-    console.log(count);
+    // console.log(count);
   }
   let changeData = () => {
     let a = array;
